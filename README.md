@@ -7,8 +7,7 @@ This project is a web application designed to manage purchase invoices. It allow
 Design Choices
 
 HTML
-
-Semantic HTML: The HTML structure uses semantic tags like <header>, <section>, and <table> to improve readability and accessibility.
+Semantic HTML: The HTML structure uses semantic tags like < header >, < section >, and < table > to improve readability and accessibility.
 
 Tailwind CSS: Tailwind CSS is used for styling to ensure a modern and responsive design with minimal custom CSS.
 
