@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factures d'Achats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-100 p-5 flex flex-col items-end">
+
+    <!-- Header Section -->
+    <header class="bg-blue-800 text-white p-5 rounded-md mb-5 border border-gray-300 shadow-md w-full">
+        <div class="flex justify-between">
+            <h1 class="text-xl font-bold">Traitement des Factures d'Achats</h1>
+            <div class="text-right">
+                <p class="text-lg">Société : ASFED AIR</p>
+                <p>Exercice : 2024</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Recap Section -->
+    <section class="bg-white p-5 rounded-md shadow-md mb-5 border border-gray-300 w-full">
+        <h2 class="text-lg font-bold mb-3">Recapitulatif de la saisie</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left text-gray-500 border-separate border-spacing-0">
+                <thead class="text-xs text-gray-700 uppercase bg-blue-200 border-b-2 border-blue-800">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">Périodes</th>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">janv 2024</th>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">fév 2024</th>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">mars 2024</th>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">avr 2024</th>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">mai 2024</th>
+                        <th scope="col" class="px-6 py-3 border border-gray-300">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-gray-100">
+                        <td class="px-6 py-4 border border-gray-300">Acquisitions</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                    </tr>
+                    <tr class="bg-gray-100">
+                        <td class="px-6 py-4 border border-gray-300">Achats</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                        <td class="px-6 py-4 border border-gray-300">-</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="bg-gray-200 font-semibold border-t-2 border-blue-800">
+                        <td class="px-6 py-4 border border-gray-300">TOTAUX</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <!-- Invoice Entry Section -->
+    <section class="bg-white p-5 rounded-md shadow-md mb-5 border border-gray-300 w-full">
+        <h2 class="text-lg font-bold mb-3">Saisie de Factures</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left text-gray-500 border-separate border-spacing-0">
+                <thead class="text-xs text-gray-700 uppercase border-b-2 border-blue-800">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Date</th>
+                        <th scope="col" class="px-6 py-3">N° de Fac</th>
+                        <th scope="col" class="px-6 py-3">Fournisseur</th>
+                        <th scope="col" class="px-6 py-3">N° Compte</th>
+                        <th scope="col" class="px-6 py-3">Nature des biens</th>
+                        <th scope="col" class="px-6 py-3">Taxe</th>
+                        <th scope="col" class="px-6 py-3">Rubrique</th>
+                        <th scope="col" class="px-6 py-3">Montant HT</th>
+                        <th scope="col" class="px-6 py-3">Taux Taxe</th>
+                        <th scope="col" class="px-6 py-3">Montant Taxe</th>
+                        <th scope="col" class="px-6 py-3">Montant TTC</th>
+                        <th scope="col" class="px-6 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-table-body" class="bg-gray-100">
+                    <!-- Existing rows -->
+                    <tr class="bg-gray-100">
+                        <td class="px-6 py-4 border border-gray-300">01/01/2024</td>
+                        <td class="px-6 py-4 border border-gray-300">85793687</td>
+                        <td class="px-6 py-4 border border-gray-300">AMENDIS</td>
+                        <td class="px-6 py-4 border border-gray-300">613555</td>
+                        <td class="px-6 py-4 border border-gray-300">Eau Non Stockable</td>
+                        <td class="px-6 py-4 border border-gray-300">TVA</td>
+                        <td class="px-6 py-4 border border-gray-300">146</td>
+                        <td class="px-6 py-4 border border-gray-300">165,76 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">7%</td>
+                        <td class="px-6 py-4 border border-gray-300">11,60 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">177,43 DH</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><input type="date" id="date" class="border p-2"></td>
+                        <td><input type="text" id="invoice-number" class="border p-2" placeholder="N° de Fac"></td>
+                        <td><input type="text" id="supplier" class="border p-2" placeholder="Fournisseur"></td>
+                        <td><input type="text" id="account-number" class="border p-2" placeholder="N° Compte"></td>
+                        <td><input type="text" id="nature" class="border p-2" placeholder="Nature des biens"></td>
+                        <td><input type="text" id="tax" class="border p-2" placeholder="Taxe"></td>
+                        <td><input type="text" id="rubrique" class="border p-2" placeholder="Rubrique"></td>
+                        <td><input type="number" id="amount-ht" class="border p-2" placeholder="Montant HT"></td>
+                        <td><input type="number" id="tax-rate" class="border p-2" placeholder="Taux Taxe"></td>
+                        <td colspan="2"></td>
+                        <td>
+                            <button type="button" id="add-invoice" class="bg-blue-500 text-white p-2 rounded">Ajouter</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment-section" class="bg-white p-5 rounded-md shadow-md mb-5 border border-gray-300 text-right">
+        <div>
+            <h2 class="text-lg font-bold mb-3">Paiement de la Facture</h2>
+            <table class="min-w-full text-sm text-left text-gray-500 border-separate border-spacing-0">
+                <thead class="text-xs text-gray-700 uppercase bg-blue-200 border-b-2 border-blue-800">
+                    <tr>
+                        <th class="px-6 py-3 border border-gray-300">Date</th>
+                        <th class="px-6 py-3 border border-gray-300">Mode</th>
+                        <th class="px-6 py-3 border border-gray-300">Réf</th>
+                        <th class="px-6 py-3 border border-gray-300">Montant</th>
+                        <th class="px-6 py-3 border border-gray-300">Etablissement</th>
+                    </tr>
+                </thead>
+                <tbody id="payment-table-body">
+                    <tr class="bg-gray-100">
+                        <td class="px-6 py-4 border border-gray-300">15/01/2024</td>
+                        <td class="px-6 py-4 border border-gray-300">Chèque</td>
+                        <td class="px-6 py-4 border border-gray-300">4569832</td>
+                        <td class="px-6 py-4 border border-gray-300">177,43 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">BMCE</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Supplier Section -->
+    <section id="supplier-section" class="bg-white p-5 rounded-md shadow-md mb-5 border border-gray-300 w-full">
+        <h2 class="text-lg font-bold mb-3">Fournisseurs</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left text-gray-500 border-separate border-spacing-0">
+                <thead class="text-xs text-gray-700 uppercase bg-blue-200 border-b-2 border-blue-800">
+                    <tr>
+                        <th class="px-6 py-3 border border-gray-300">Date</th>
+                        <th class="px-6 py-3 border border-gray-300">Facture</th>
+                        <th class="px-6 py-3 border border-gray-300">Compte</th>
+                        <th class="px-6 py-3 border border-gray-300">Montant HT</th>
+                        <th class="px-6 py-3 border border-gray-300">Taxe</th>
+                        <th class="px-6 py-3 border border-gray-300">TTC</th>
+                        <th class="px-6 py-3 border border-gray-300">Paiement</th>
+                        <th class="px-6 py-3 border border-gray-300">RAS appliqué</th>
+                        <th class="px-6 py-3 border border-gray-300">Reste à payer</th>
+                    </tr>
+                </thead>
+                <tbody id="supplier-table-body">
+                    <tr class="bg-gray-100">
+                        <td class="px-6 py-4 border border-gray-300">01/01/2024</td>
+                        <td class="px-6 py-4 border border-gray-300">85793687</td>
+                        <td class="px-6 py-4 border border-gray-300">613555</td>
+                        <td class="px-6 py-4 border border-gray-300">165,76 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">11,60 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">177,43 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">Oui</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                        <td class="px-6 py-4 border border-gray-300">0.00 DH</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
